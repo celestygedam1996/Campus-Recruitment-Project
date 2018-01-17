@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="http://localhost/CampusRecruitment/img/favicon.ico">
+
+  <title>t&p Details |Campus Recruitment</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <?php include 'header.php';?>
+
+    <main role="main">
+<div class="alert alert-primary" role="alert">
+  t&p Details
+</div>
+      <form>
+  <div class="form-group">
+    <label for="exampleInputClgname">Username</label>
+    <input type="clgname" class="form-control" id="exampleInputClgname" aria-describedby="clgnameHelp" placeholder="Enter username">
+    <label for="exampleInputEmail">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label for="exampleInputPhno">Phno</label>
+    <input type="Phno" class="form-control" id="exampleInputPhno" aria-describedby="PhnoHelp" placeholder="Enter Phno">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+   
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Check me out
+    </label>
+  </div>
+   <a  href="t&p_dashboard.php" type="submit" class="btn btn-primary">Update</a>
+</form>
+
+      </main>
+
+
+<?php include 'footer.php';?>
+     
+
+    </div> <!-- /container -->
+  </body>
+  </html>
