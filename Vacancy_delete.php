@@ -47,19 +47,13 @@ if(isset($_POST["vacancy_id"]) && !empty($_POST["vacancy_id"])){
   <meta name="author" content="">
   <link rel="icon" href="http://localhost/CampusRecruitment/img/favicon.ico">
 
-  <title> Delete Vacancy | Campus Recruitment</title>
+  <title> Delete Batch | Campus Recruitment</title>
 
   <!-- Bootstrap core CSS -->
   <link href="http://localhost/CampusRecruitment/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-
-  <!-- Custom styles for this template -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
-
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.css" rel="stylesheet">
-
 
   <!-- Custom styles for this template -->
   <link href="http://localhost/CampusRecruitment/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
@@ -73,7 +67,7 @@ if(isset($_POST["vacancy_id"]) && !empty($_POST["vacancy_id"])){
     <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Delete Vacancy</h1>
+                        <h1>Delete Record</h1>
                     </div>
 
                     

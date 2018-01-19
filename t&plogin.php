@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // Validate credentials
   if(empty($username_err) && empty($password_err)){
 // Prepare a select statement
-    $sql = "SELECT tandp_name, tandp_password FROM tandp WHERE tandp_name = ?";
+    $sql = "SELECT username, password FROM tandp WHERE username = ?";
 
     if($stmt = mysqli_prepare($link, $sql)){
 // Bind variables to the prepared statement as parameters
@@ -78,18 +78,19 @@ mysqli_close($link);
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, sstaffink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="http://localhost/CampusRecruitment/img/favicon.ico">
+  
+<link rel="icon" href="http://localhost/food/img/favicon.ico">
 
-  <title> T and P Login| Campus Recruitment</title>
+  <title>Campus Recruitment</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://localhost/food/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
+  <link href="http://localhost/food/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
 </head>
 
 <body>
@@ -99,33 +100,34 @@ mysqli_close($link);
 
     <main role="main">
       <div class="alert alert-primary" role="alert">
-        T and P Login
+        t&p Login
       </div>
-     
-
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username:<sup>*</sup></label>
-                <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password:<sup>*</sup></label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
-            <p>Don't have an account? <a href="t&pregister.php">Sign up now</a>.</p>
-        </form>
-
-      </main>
 
 
-      <?php include 'footer.php';?>
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+          <label>Username:<sup>*</sup></label>
+          <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
+          <span class="help-block"><?php echo $username_err; ?></span>
+        </div>    
+        <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+          <label>Password:<sup>*</sup></label>
+          <input type="password" name="password" class="form-control">
+          <span class="help-block"><?php echo $password_err; ?></span>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+         <p>Don't have an account? <a href="t&pregister.php">Sign up now</a>.</p>
+
+      </form>
+
+    </main>
 
 
-    </div> <!-- /container -->
-  </body>
-  </html>
+    <?php include 'footer.php';?>
+
+
+  </div> <!-- /container -->
+</body>
+</html>

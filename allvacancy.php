@@ -11,20 +11,19 @@
   <title>      Vacancy Details  | Campus Recruitment</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/food/css/bootstrap.min.css" rel="stylesheet">
 
-
-  <!-- Custom styles for this template -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://localhost/food/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
 </head>
 
 <body>
 
-  
-    <?php include 'header.php';?>
+    <div class="container">
+        <?php include 'header.php';?>
 
-     <div class="wrapper">
-        <div class="container-fluid">
+        <main role="main">
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">

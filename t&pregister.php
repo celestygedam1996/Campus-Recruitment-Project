@@ -3,25 +3,25 @@
 require_once 'config.php';
  
 // Define variables and initialize with empty values
-$tandp_name = $tandp_password = $confirm_password = "";
+$username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
-    if(empty(trim($_POST["tandp_name"]))){
+    if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM tandp WHERE tandp_name = ?";
+        $sql = "SELECT id FROM tandp WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
             // Set parameters
-            $param_username = trim($_POST["tandp_name"]);
+            $param_username = trim($_POST["username"]);
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $username_err = "This username is already taken.";
                 } else{
-                    $tandp_name = trim($_POST["tandp_name"]);
+                    $username = trim($_POST["username"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -43,12 +43,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate password
-    if(empty(trim($_POST['tandp_password']))){
+    if(empty(trim($_POST['password']))){
         $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST['tandp_password'])) < 6){
+    } elseif(strlen(trim($_POST['password'])) < 6){
         $password_err = "Password must have atleast 6 characters.";
     } else{
-        $tandp_password = trim($_POST['tandp_password']);
+        $password = trim($_POST['password']);
     }
     
     // Validate confirm password
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $confirm_password_err = 'Please confirm password.';     
     } else{
         $confirm_password = trim($_POST['confirm_password']);
-        if($tandp_password != $confirm_password){
+        if($password != $confirm_password){
             $confirm_password_err = 'Password did not match.';
         }
     }
@@ -65,15 +65,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO tandp (tandp_name, tandp_password) VALUES (?, ?)";
+        $sql = "INSERT INTO tandp (username, password) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
             
             // Set parameters
-            $param_username = $tandp_name;
-            $param_password = password_hash($tandp_password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_username = $username;
+            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -92,10 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
-
-
-
-
+ 
 <!doctype html>
 <html lang="en">
 <head>
@@ -103,35 +100,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="http://localhost/CampusRecruitment/img/favicon.ico">
+  <link rel="icon" href="http://localhost/food/img/favicon.ico">
 
-  <title>t&p Register |Campus Recruitment</title>
+   <title>Campus Recruitment</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://localhost/food/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="http://localhost/CampusRecruitment/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
+  <link href="http://localhost/food/css/bootstrap.min.cssnarrow-jumbotron.css" rel="stylesheet">
 </head>
 
 <body>
-
+ 
   <div class="container">
     <?php include 'header.php';?>
 
     <main role="main">
-<div class="alert alert-primary" role="alert">
-  t&p register
-</div>
+      <div class="alert alert-primary" role="alert">
+        t&p Reg
+      </div>
+      
        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username:<sup>*</sup></label>
-                <input type="text" name="tandp_name"class="form-control" value="<?php echo $tandp_name; ?>">
+                <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <label>Password:<sup>*</sup></label>
-                <input type="password" name="tandp_password" class="form-control" value="<?php echo $tandp_password; ?>">
+                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
@@ -146,12 +144,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Already have an account? <a href="t&plogin.php">Login here</a>.</p>
         </form>
 
-      </main>
+    </main>
 
 
-<?php include 'footer.php';?>
-     
+    <?php include 'footer.php';?>
 
-    </div> <!-- /container -->
-  </body>
-  </html>
+
+  </div> <!-- /container -->
+</body>
+</html>
